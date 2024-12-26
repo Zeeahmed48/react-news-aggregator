@@ -1,14 +1,8 @@
-import { FC, InputHTMLAttributes, ReactElement } from 'react';
+import { FC, ReactElement } from 'react';
 
 import { cn } from '@/utils';
 
 import './style.css';
-
-type InputProps = InputHTMLAttributes<HTMLInputElement> & {
-  variant?: 'primary-light-contained' | 'white-bordered';
-  renderLeftIcon?: () => ReactElement | null;
-  renderRightIcon?: () => ReactElement | null;
-};
 
 const Input: FC<InputProps> = ({
   variant,
