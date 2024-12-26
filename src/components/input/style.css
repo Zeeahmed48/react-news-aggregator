@@ -1,0 +1,15 @@
+.input-container {
+  @apply flex items-center px-2.5 py-2 gap-2;
+
+  &.primary-light-contained {
+    @apply bg-primary-light rounded-lg;
+  }
+
+  &.white-bordered {
+    @apply bg-white border border-zinc-200 rounded-lg;
+  }
+
+  & .text-input {
+    @apply flex-1 w-full text-sm border-none focus:ring-0 bg-transparent placeholder:text-neutral-400 placeholder:text-sm p-0;
+  }
+}

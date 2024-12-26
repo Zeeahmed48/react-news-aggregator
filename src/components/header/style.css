@@ -1,0 +1,35 @@
+.header {
+  @apply bg-white py-3 border-b border-b-primary-medium sticky top-0 z-50;
+
+  .header-container {
+    @apply flex justify-between items-center gap-3;
+
+    .header-navigations {
+      @apply flex items-center gap-8;
+
+      .logo {
+        @apply w-10 h-10 object-contain rounded-lg;
+      }
+
+      nav {
+        @apply flex items-center gap-8 max-lg:hidden;
+
+        .nav-link {
+          @apply text-neutral-400 font-semibold text-sm;
+
+          &.active {
+            @apply text-slate-900;
+          }
+        }
+      }
+    }
+
+    .header-input-container {
+      @apply flex items-center gap-2.5 flex-1 justify-end;
+
+      .header-input {
+        @apply flex-1 max-w-[420px];
+      }
+    }
+  }
+}

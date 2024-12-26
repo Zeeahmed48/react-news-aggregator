@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom';
 
 import { Header } from '@/components';
 
+import './style.css';
+
 const MainLayout: FC = (): ReactElement => {
   return (
     <div className="page">
