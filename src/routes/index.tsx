@@ -1,16 +1,27 @@
+import { lazy } from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 
-import { MainLayout } from '@/layouts';
-import { NewsFeed } from '@/views';
+import { SuspenseWrapper } from '@/components';
+
+const MainLayout = lazy(() => import('@/layouts/main'));
+const NewsFeed = lazy(() => import('@/views/news-feed'));
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <MainLayout />,
+    element: (
+      <SuspenseWrapper>
+        <MainLayout />
+      </SuspenseWrapper>
+    ),
     children: [
       {
         path: 'newsfeed',
-        element: <NewsFeed />
+        element: (
+          <SuspenseWrapper>
+            <NewsFeed />
+          </SuspenseWrapper>
+        )
       }
     ]
   }

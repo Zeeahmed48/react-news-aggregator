@@ -1,0 +1,32 @@
+import { FC, ReactElement } from 'react';
+import { Link } from 'react-router-dom';
+
+import { Card } from '@/components';
+import { formatDateString } from '@/utils';
+
+import './style.css';
+
+const NewsCard: FC<News> = ({
+  title,
+  urlToImage,
+  description,
+  url,
+  publishedAt
+}): ReactElement => {
+  return (
+    <Card className="news-card">
+      <img className="news-image" src={urlToImage} alt={title} />
+      <div className="news-content">
+        <div className="news-link-container">
+          <Link to={url} target="_blank" className="news-link">
+            {title}
+          </Link>
+        </div>
+        <p className="news-description">{description}</p>
+        <p className="news-date">{formatDateString(publishedAt)}</p>
+      </div>
+    </Card>
+  );
+};
+
+export default NewsCard;
