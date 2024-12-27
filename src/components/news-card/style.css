@@ -1,27 +1,27 @@
 .news-card {
-    @apply flex flex-col min-h-36 p-0 overflow-hidden;
+  @apply flex flex-col min-h-36 p-0 overflow-hidden;
 
-    .news-image {
-        @apply w-full select-none;
+  .news-image {
+    @apply w-full select-none;
+  }
+
+  .news-content {
+    @apply flex-1 p-5;
+
+    .news-link-container {
+      @apply flex justify-between items-start gap-4 mb-1;
+
+      .news-link {
+        @apply hover:text-primary truncate transition-all text-xl font-semibold text-slate-900;
+      }
     }
-    
-    .news-content {
-        @apply flex-1 p-5;
 
-        .news-link-container {
-            @apply flex justify-between items-start gap-4 mb-1;
-
-            .news-link {
-                @apply hover:text-primary truncate transition-all text-xl font-semibold text-slate-900;
-            }
-        }
-
-        .news-description {
-            @apply text-gray-700 text-sm mb-4;
-        }
-
-        .news-date {
-            @apply text-xs text-neutral-400;
-        }
+    .news-description {
+      @apply text-gray-700 text-sm mb-4;
     }
+
+    .news-date {
+      @apply text-xs text-neutral-400;
+    }
+  }
 }
