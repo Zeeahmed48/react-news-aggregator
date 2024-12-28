@@ -1,50 +1,96 @@
-# React + TypeScript + Vite
+## Project Stack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This app is built with the following technologies:
 
-Currently, two official plugins are available:
+### **Frontend:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React.js**: A powerful JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework used for designing responsive and highly customizable UIs.
 
-## Expanding the ESLint configuration
+### **Data Fetching:**
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Axios**: A popular promise-based HTTP client for making API requests and handling asynchronous operations.
 
-- Configure the top-level `parserOptions` property like this:
+### **News APIs:**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **NewsAPI**: A comprehensive API that allows access to articles from over 70,000 news sources.
+- **The Guardian API**: Provides access to articles from The Guardian, one of the most respected news outlets in the world.
+- **New York Times API**: Provides access to articles from The New York Times, a leading global news provider.
+
+---
+
+## Prerequisites
+
+Before you begin, make sure you have the following installed on your machine:
+
+- **Docker**: Follow the instructions for installation [here](https://docs.docker.com/get-docker/).
+
+---
+
+## Cloning the Repository
+
+1. Clone the repository to your local machine:
+
+    ```bash
+    git clone https://github.com/Zeeahmed48/react-news-aggregator.git
+    ```
+
+2. Navigate to project directory:
+
+    ```bash
+    cd react-news-aggregator
+    ```
+
+---
+
+## Setting Up the Development Environment
+
+### 1. Create the `.env` File
+
+Before running the app, you need to define your environment variables:
+
+- Create a `.env` file in the root of the project.
+- Add your environment variables, such as API keys for the news services.
+
+Example `.env` file:
+
+```env
+VITE_NEWS_API_KEY=your-newsapi-key-here
+VITE_GUARDIAN_API_KEY=your-guardian-api-key-here
+VITE_NYTIMES_API_KEY=your-nytimes-api-key-here
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Building the Docker Image
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+You can build the Docker image for the app using the Dockerfile.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- In the project root, where the Dockerfile is located, run the following command:
+
+
+```bash
+docker build . -t "react-news-aggregator:v1.0"
+```
+
+This will create a Docker image named react-news-aggregator with tag v1.0.
+
+### 3. Running the Application
+
+Once the Docker image is built, you can run the app inside a Docker container.
+
+```bash
+docker run --name react-news-aggregator -p 8080:8080 --env-file .env react-news-aggregator:v1.0
+```
+
+---
+
+For the next time just run the container:
+
+```bash
+docker start react-news-aggregator
+```
+
+to see the logs in the terminal:
+
+```bash
+docker logs -f react-news-aggregator
 ```
