@@ -1,7 +1,7 @@
 import { FC, ReactElement } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
-import { Container, Input } from '@/components';
+import { Container } from '@/components';
 import { APP_NAVIGATIONS } from '@/constants';
 import { cn } from '@/utils';
 
@@ -31,13 +31,6 @@ const Header: FC = (): ReactElement => {
                 );
               })}
             </nav>
-          </div>
-          <div className="header-input-container">
-            <Input
-              variant="white-bordered"
-              placeholder="Search News"
-              className="header-input"
-            />
           </div>
         </div>
       </Container>

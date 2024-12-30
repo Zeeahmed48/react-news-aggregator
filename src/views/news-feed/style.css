@@ -1,7 +1,7 @@
 .news-feed-page {
-  @apply bg-primary-light flex-1 py-2.5;
+  @apply bg-primary-light flex-1 flex flex-col py-2.5;
 
   .news-feed-container {
-    @apply flex min-h-full justify-between items-center gap-3 flex-wrap;
+    @apply flex-1 flex justify-between items-center gap-3 flex-wrap;
   }
 }

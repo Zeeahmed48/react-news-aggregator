@@ -1,0 +1,11 @@
+.filters-container {
+  @apply flex w-full justify-between items-center gap-3;
+
+  .filter-input-container {
+    @apply max-w-[420px] flex-1;
+  }
+
+  .dropdowns-container {
+    @apply flex items-center gap-3;
+  }
+}

@@ -1,4 +1,9 @@
-import { HTMLAttributes, InputHTMLAttributes, PropsWithChildren } from 'react';
+import {
+  HTMLAttributes,
+  InputHTMLAttributes,
+  PropsWithChildren,
+  SelectHTMLAttributes
+} from 'react';
 
 declare global {
   type ContainerProps = PropsWithChildren<HTMLAttributes<HTMLDivElement>>;
@@ -13,13 +18,32 @@ declare global {
     HTMLAttributes<HTMLDivElement> & { variant?: 'primary-bordered' }
   >;
 
+  type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
+    options: Option[];
+    label?: string;
+    placeholder?: string;
+  };
+
+  type Option = {
+    label: string;
+    value: string;
+  };
+
+  type Source = 'newsapi' | 'guardian' | 'nyt' | '';
+
+  type Filters = {
+    query?: string;
+    date?: string;
+    category?: string;
+  };
+
   type News = {
     author: string;
     content: string;
     description: string;
     publishedAt: string;
     source: {
-      id: string;
+      id: string | null;
       name: string;
     };
     title: string;

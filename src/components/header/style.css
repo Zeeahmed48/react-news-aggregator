@@ -23,13 +23,5 @@
         }
       }
     }
-
-    .header-input-container {
-      @apply flex items-center gap-2.5 flex-1 justify-end;
-
-      .header-input {
-        @apply flex-1 max-w-[420px];
-      }
-    }
   }
 }
