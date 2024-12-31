@@ -11,7 +11,7 @@ export const getTopNews = async (
     pageSize: 10,
     page: 1
   }
-): Promise<NewsResponse> => {
+) => {
   return fetchData<NewsResponse>(newsApiService, '/top-headlines', {
     params: queryParams
   });

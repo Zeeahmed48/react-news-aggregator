@@ -2,7 +2,7 @@
   @apply flex flex-col min-h-36 p-0 overflow-hidden;
 
   .news-image {
-    @apply w-full select-none;
+    @apply w-full select-none aspect-video object-cover;
   }
 
   .news-content {

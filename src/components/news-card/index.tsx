@@ -6,16 +6,16 @@ import { formatDateString } from '@/utils';
 
 import './style.css';
 
-const NewsCard: FC<News> = ({
+const NewsCard: FC<NewsArticle> = ({
   title,
-  urlToImage,
   description,
+  imgUrl,
   url,
   publishedAt
 }): ReactElement => {
   return (
     <Card className="news-card">
-      <img className="news-image" src={urlToImage} alt={title} />
+      <img className="news-image" src={imgUrl} alt={title} />
       <div className="news-content">
         <div className="news-link-container">
           <Link to={url} target="_blank" className="news-link">
