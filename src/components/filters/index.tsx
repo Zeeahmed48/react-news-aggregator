@@ -1,14 +1,17 @@
 import { FC, ReactElement, useState } from 'react';
 
-import { Select, Input } from '@/components';
+import { Select, Input, DatePicker } from '@/components';
 import { CATEGORIES, SOURCES } from '@/constants';
 import { useDebounce } from '@/hooks';
+import { getOneMonthAgo } from '@/utils';
 
 import './style.css';
 
 type FiltersProps = {
   search: string;
   setSearch: (search: string) => void;
+  date: string;
+  setDate: (date: string) => void;
   selectedSource: string;
   setSelectedSource: (source: Source) => void;
   selectedCategory: string;
@@ -19,6 +22,8 @@ type FiltersProps = {
 const Filters: FC<FiltersProps> = ({
   search,
   setSearch,
+  date,
+  setDate,
   selectedSource,
   setSelectedSource,
   selectedCategory,
@@ -49,6 +54,11 @@ const Filters: FC<FiltersProps> = ({
         />
       </div>
       <div className="dropdowns-container">
+        <DatePicker
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          min={getOneMonthAgo()}
+        />
         <Select
           placeholder="Select Source"
           options={SOURCES}

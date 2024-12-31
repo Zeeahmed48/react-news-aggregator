@@ -8,9 +8,11 @@ import './style.css';
 const Search: FC = memo((): ReactElement => {
   const {
     search,
+    date,
     selectedSource,
     selectedCategory,
     setSearch,
+    setDate,
     setSelectedSource,
     setSelectedCategory,
     filters
@@ -29,9 +31,11 @@ const Search: FC = memo((): ReactElement => {
       <Container>
         <Filters
           search={search}
+          date={date}
           selectedCategory={selectedCategory}
           selectedSource={selectedSource}
           setSearch={setSearch}
+          setDate={setDate}
           setSelectedCategory={setSelectedCategory}
           setSelectedSource={setSelectedSource}
           shouldDebounce

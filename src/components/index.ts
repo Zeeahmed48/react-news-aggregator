@@ -1,5 +1,6 @@
 export { default as Card } from './card';
 export { default as Container } from './container';
+export { default as DatePicker } from './date-picker';
 export { default as EmptyResult } from './empty-result';
 export { default as Filters } from './filters';
 export { default as Header } from './header';

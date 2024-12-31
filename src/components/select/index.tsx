@@ -10,12 +10,8 @@ const Select: FC<SelectProps> = ({
 }): ReactElement => {
   return (
     <form className="select-form">
-      {!!label && (
-        <label htmlFor="countries" className="select-label">
-          {label}
-        </label>
-      )}
-      <select id="countries" className="select-box" {...restProps}>
+      {!!label && <label className="select-label">{label}</label>}
+      <select className="select-box" {...restProps}>
         {!!placeholder && <option value="">{placeholder}</option>}
         {options.map(({ label, value }) => {
           return (

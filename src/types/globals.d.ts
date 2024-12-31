@@ -24,6 +24,10 @@ declare global {
     placeholder?: string;
   };
 
+  type DatePickerProps = InputHTMLAttributes<HTMLInputElement> & {
+    label?: string;
+  };
+
   type Option = {
     label: string;
     value: string;

@@ -15,6 +15,14 @@ export const formatDateString = (dateString: string): string => {
   return formattedDate;
 };
 
+export const getOneMonthAgo = (): string => {
+  const date = new Date();
+
+  date.setMonth(date.getMonth() - 1);
+
+  return formatDate(date);
+};
+
 export const formatDate = (date: Date): string => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');

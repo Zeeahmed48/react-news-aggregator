@@ -1,6 +1,5 @@
 import { createAxiosInstance, fetchData } from '@/axios';
 import { NYT_API_URL } from '@/constants';
-import { formatDate } from '@/utils';
 
 const nytApiService = createAxiosInstance(NYT_API_URL);
 
@@ -9,8 +8,7 @@ export const getNytNews = async (filters: Filters) => {
 
   const params = {
     q: query || '',
-    begin_date: date || '',
-    end_date: formatDate(new Date()),
+    ...(date && { begin_date: date }),
     category: category || ''
   };
 
