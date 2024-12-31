@@ -1,11 +1,15 @@
 .filters-container {
-  @apply flex w-full justify-between items-center gap-3 max-sm:flex-col;
+  @apply flex w-full justify-between items-center gap-3 flex-wrap max-sm:flex-col;
 
   .filter-input-container {
-    @apply flex-1 sm:max-w-[420px] max-sm:w-full;
+    @apply flex-1 max-w-[420px] min-w-80 max-[480px]:w-full;
   }
 
   .dropdowns-container {
-    @apply flex items-center gap-3 max-sm:w-full;
+    @apply flex items-center gap-3 max-sm:w-full max-sm:flex-wrap;
+
+    .date-picker-container {
+      @apply max-[480px]:w-full max-[480px]:max-w-full;
+    }
   }
 }
