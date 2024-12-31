@@ -1,4 +1,5 @@
 import {
+  ChangeEvent,
   HTMLAttributes,
   InputHTMLAttributes,
   PropsWithChildren,
@@ -28,12 +29,34 @@ declare global {
     label?: string;
   };
 
+  type CheckboxProps = Option &
+    InputHTMLAttributes<HTMLInputElement> & {
+      checked?: boolean;
+      onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    };
+
+  interface CheckListProps {
+    title?: string;
+    list: Option[];
+    selectedItems: string[];
+    onSelectionChange: (updatedList: string[]) => void;
+  }
+
   type Option = {
     label: string;
     value: string;
   };
 
   type Source = 'newsapi' | 'guardian' | 'nytimes' | '';
+
+  type Preferences = {
+    selectedCategories: string[];
+    selectedSources: string[];
+  };
+
+  type PreferencesProps = {
+    onSavePreferences: (preferences: Preferences) => void;
+  };
 
   type Filters = {
     query?: string;
