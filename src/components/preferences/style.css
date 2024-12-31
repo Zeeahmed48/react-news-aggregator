@@ -1,7 +1,7 @@
 .preference-container {
   @apply w-full;
 
-  .preference-container {
+  .preference-title {
     @apply text-center text-2xl font-semibold text-gray-900 mb-8;
   }
 
