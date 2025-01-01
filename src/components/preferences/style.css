@@ -6,7 +6,7 @@
   }
 
   .preference-grid {
-    @apply grid grid-cols-2 max-sm:grid-cols-1 gap-5;
+    @apply grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-5;
   }
 
   .save-btn-container {

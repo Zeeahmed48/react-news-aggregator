@@ -5,24 +5,22 @@ const newsApiService = createAxiosInstance(NEWS_API_URL, {
   headers: { Authorization: import.meta.env.VITE_NEWS_API_KEY }
 });
 
-export const getTopNews = async (
-  queryParams = {
-    sources: 'bbc-news',
-    pageSize: 10,
-    page: 1
-  }
-) => {
+export const fetchNewsAPITopNews = async (filters: {
+  categories: string[];
+}) => {
   return fetchData<NewsResponse>(newsApiService, '/top-headlines', {
-    params: queryParams
+    params: {
+      category: filters.categories.join(',')
+    }
   });
 };
 
-export const getNewsAPI = async (filters: Filters) => {
+export const getNewsAPI = async (filters?: Filters) => {
   const { query, date, category } = filters ?? {};
   const params = {
-    q: query || '',
-    from: date || '',
-    category: category || ''
+    q: query ?? '',
+    from: date ?? '',
+    category: category ?? ''
   };
 
   return fetchData<NewsResponse>(newsApiService, '/everything', {

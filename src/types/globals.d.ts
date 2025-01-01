@@ -49,12 +49,21 @@ declare global {
 
   type Source = 'newsapi' | 'guardian' | 'nytimes' | '';
 
+  type ApiSource = {
+    id: string | null;
+    name: string;
+  };
+
   type Preferences = {
     selectedCategories: string[];
     selectedSources: string[];
+    selectedAuthors: string[];
   };
 
   type PreferencesProps = {
+    authors: Option[];
+    sources: Option[];
+    categories: Option[];
     onSavePreferences: (preferences: Preferences) => void;
   };
 
@@ -73,14 +82,11 @@ declare global {
   };
 
   type News = {
-    author: string;
+    author?: string;
     content: string;
     description: string;
     publishedAt: string;
-    source: {
-      id: string | null;
-      name: string;
-    };
+    source: ApiSource;
     title: string;
     url: string;
     urlToImage: string;
