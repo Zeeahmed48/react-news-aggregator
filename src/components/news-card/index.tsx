@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { Card } from '@/components';
 import { formatDateString } from '@/utils';
+import { no_image_placeholder } from '@/constants';
 
 import './style.css';
 
@@ -15,7 +16,11 @@ const NewsCard: FC<NewsArticle> = ({
 }): ReactElement => {
   return (
     <Card className="news-card">
-      <img className="news-image" src={imgUrl} alt={title} />
+      <img
+        className="news-image"
+        src={imgUrl ?? no_image_placeholder}
+        alt={title}
+      />
       <div className="news-content">
         <div className="news-link-container">
           <Link to={url} target="_blank" className="news-link">
