@@ -9,10 +9,10 @@ const useFilters = () => {
   const filters = useMemo(
     () => ({
       query: search,
-      date: date
-      // category: selectedCategory
+      date: date,
+      category: selectedCategory
     }),
-    [search, date]
+    [search, date, selectedCategory]
   );
 
   return {

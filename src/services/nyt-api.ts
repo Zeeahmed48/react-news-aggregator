@@ -4,12 +4,12 @@ import { NYT_API_URL } from '@/constants';
 const nytApiService = createAxiosInstance(NYT_API_URL);
 
 export const getNytNews = async (filters: Filters) => {
-  const { query, date, category } = filters ?? {};
+  const { query = '', date, category } = filters ?? {};
 
   const params = {
-    q: query || '',
+    q: query,
     ...(date && { begin_date: date }),
-    category: category || ''
+    ...(category && { fq: `news_desk:("${category}")` })
   };
 
   return fetchData<NytResponse>(nytApiService, '/articlesearch.json', {

@@ -4,12 +4,12 @@ import { GUARDIAN_API_URL } from '@/constants';
 const guardianApiService = createAxiosInstance(GUARDIAN_API_URL);
 
 export const getGuradianNews = async (filters: Filters) => {
-  const { query, date, category } = filters ?? {};
+  const { query = '', date = '', category } = filters ?? {};
 
   const params = {
-    q: query || '',
-    from: date || '',
-    category: category || ''
+    q: query,
+    from: date,
+    ...(category && { section: category })
   };
 
   return fetchData<GuardianResponse>(guardianApiService, '/search', {

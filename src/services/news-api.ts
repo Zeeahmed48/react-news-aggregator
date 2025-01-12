@@ -16,14 +16,14 @@ export const fetchNewsAPITopNews = async (filters: {
 };
 
 export const getNewsAPI = async (filters?: Filters) => {
-  const { query, date, category } = filters ?? {};
+  const { query = '', date = '', category = '' } = filters ?? {};
   const params = {
-    q: query ?? '',
-    from: date ?? '',
-    category: category ?? ''
+    q: query,
+    from: date,
+    category
   };
 
-  return fetchData<NewsResponse>(newsApiService, '/everything', {
+  return fetchData<NewsResponse>(newsApiService, '/top-headlines', {
     params
   });
 };
