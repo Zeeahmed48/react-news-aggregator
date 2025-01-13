@@ -107,3 +107,38 @@ export const shuffleArray = <T>(arr: T[]): T[] => {
 export const isEmptyArray = <T>(arr: T[]): boolean => {
   return arr.length === 0;
 };
+
+export const sanitizeParams = <T extends Record<string, unknown>>(
+  params: T
+): Partial<T> => {
+  return Object.fromEntries(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    Object.entries(params).filter(([_, value]) => {
+      return value !== null && value !== undefined && value !== '';
+    })
+  ) as Partial<T>;
+};
+
+export const transformNewsApiArticlesToAuthorOptions = (
+  articles: News[]
+): Option[] => {
+  const uniqueAuthors = new Set<string>();
+
+  articles.forEach(({ author }) => {
+    if (author) uniqueAuthors.add(author);
+  });
+
+  return Array.from(uniqueAuthors).map((author) => ({
+    label: author,
+    value: author
+  }));
+};
+
+export const transformGuardianContributorsToOptions = (
+  contributors: GuardianAuthor[]
+): Option[] => {
+  return contributors.map(({ id, webTitle }) => ({
+    label: webTitle,
+    value: id
+  }));
+};

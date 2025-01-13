@@ -25,7 +25,7 @@ const Preferences: FC<PreferencesProps> = ({
 
     onSavePreferences({
       selectedCategories,
-      selectedSources,
+      selectedSources: selectedSources as Source[],
       selectedAuthors
     });
 

@@ -56,7 +56,7 @@ declare global {
 
   type Preferences = {
     selectedCategories: string[];
-    selectedSources: string[];
+    selectedSources: Source[];
     selectedAuthors: string[];
   };
 
@@ -72,6 +72,8 @@ declare global {
     date?: string;
     category?: string;
   };
+
+  type PreferedFilters = { categories: string[]; authors: string[] };
 
   type NewsArticle = {
     title: string;
@@ -128,6 +130,15 @@ declare global {
     multimedia: { url: string }[];
   };
 
+  type GuardianAuthor = {
+    id: string;
+    type: string;
+    webTitle: string;
+    webUrl: string;
+    apiUrl: string;
+    bio: string;
+  };
+
   type NewsResponse = {
     status: string;
     totalResults: number;
@@ -146,6 +157,14 @@ declare global {
     status: string;
     response: {
       docs: NytNews[];
+    };
+  };
+
+  type GuardianAuthorsResponse = {
+    response: {
+      status: string;
+      total: number;
+      results: GuardianAuthor[];
     };
   };
 }

@@ -1,4 +1,4 @@
-import { FC, memo, ReactElement, useMemo } from 'react';
+import { FC, memo, ReactElement } from 'react';
 
 import { Container, NewsList, Preferences } from '@/components';
 import { useAuthors, usePreferedNews, usePreferences } from '@/hooks';
@@ -14,15 +14,6 @@ const NewsFeed: FC = memo((): ReactElement => {
   const { isLoading: areNewsLoading, preferedNews } =
     usePreferedNews(preferences);
 
-  const authorsList = useMemo(
-    () =>
-      authors.map((author) => ({
-        label: author,
-        value: author
-      })),
-    [authors]
-  );
-
   return (
     <section className="news-feed-page">
       <Container className="news-feed-container">
@@ -31,7 +22,7 @@ const NewsFeed: FC = memo((): ReactElement => {
         ) : (
           <Preferences
             onSavePreferences={savePreferences}
-            authors={authorsList}
+            authors={authors}
             sources={SOURCES}
             categories={CATEGORIES}
             isLoading={isLoading}

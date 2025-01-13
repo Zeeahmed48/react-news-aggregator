@@ -1,24 +1,41 @@
 import { useEffect, useState } from 'react';
 
-import { getNewsAPI } from '@/services';
+import { getGuradianAuthors, getNewsAPI } from '@/services';
+import {
+  transformGuardianContributorsToOptions,
+  transformNewsApiArticlesToAuthorOptions
+} from '@/utils';
+
+const fetchAuthorsFromNewsApi = async (): Promise<Option[]> => {
+  const { articles } = await getNewsAPI({ query: 'latest' });
+
+  return transformNewsApiArticlesToAuthorOptions(articles);
+};
+
+const fetchAuthorsFromGuardian = async (): Promise<Option[]> => {
+  const {
+    response: { results: contributors }
+  } = await getGuradianAuthors();
+
+  return transformGuardianContributorsToOptions(contributors);
+};
 
 const useAuthors = ({ skip }: { skip?: boolean }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
-  const [authors, setAuthors] = useState<string[]>([]);
+  const [authors, setAuthors] = useState<Option[]>([]);
 
   const fetchAuthors = async () => {
     try {
       setIsLoading(true);
-      const news = await getNewsAPI({ query: 'latest' });
 
-      const extractedAuthors = new Set<string>();
+      const [newsApiAuthors, guardianAuthors] = await Promise.all([
+        fetchAuthorsFromNewsApi(),
+        fetchAuthorsFromGuardian()
+      ]);
 
-      news.articles.forEach(({ author }) => {
-        if (author) extractedAuthors.add(author);
-      });
-
-      setAuthors(Array.from(extractedAuthors));
+      const combinedAuthors = [...newsApiAuthors, ...guardianAuthors];
+      setAuthors(combinedAuthors);
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);

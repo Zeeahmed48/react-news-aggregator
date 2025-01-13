@@ -1,4 +1,4 @@
-import { FC, ReactElement } from 'react';
+import { FC, ReactElement, SyntheticEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Card } from '@/components';
@@ -14,12 +14,19 @@ const NewsCard: FC<NewsArticle> = ({
   url,
   publishedAt
 }): ReactElement => {
+  const handleImageError = (
+    event: SyntheticEvent<HTMLImageElement, Event>
+  ): void => {
+    event.currentTarget.src = no_image_placeholder; // replace corrupt image with the placeholder image
+  };
+
   return (
     <Card className="news-card">
       <img
         className="news-image"
         src={imgUrl ?? no_image_placeholder}
         alt={title}
+        onError={handleImageError}
       />
       <div className="news-content">
         <div className="news-link-container">
